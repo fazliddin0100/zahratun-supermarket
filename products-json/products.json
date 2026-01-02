@@ -1,0 +1,86 @@
+{
+  "sut_mahsulotlari": [
+    { "uz": "sut", "en": "milk", "ru": "молоко" },
+    { "uz": "qatiq", "en": "yogurt", "ru": "йогурт" },
+    { "uz": "kefir", "en": "kefir", "ru": "кефир" },
+    { "uz": "smetana", "en": "sour cream", "ru": "сметана" },
+    { "uz": "pishloq", "en": "cheese", "ru": "сыр" },
+    { "uz": "tvorog", "en": "cottage cheese", "ru": "творог" },
+    { "uz": "sariyog‘", "en": "butter", "ru": "сливочное масло" }
+  ],
+  "non_va_un_mahsulotlari": [
+    { "uz": "oq non", "en": "white bread", "ru": "белый хлеб" },
+    { "uz": "qora non", "en": "rye bread", "ru": "ржаной хлеб" },
+    { "uz": "lavash", "en": "lavash", "ru": "лаваш" },
+    { "uz": "bulochka", "en": "bun", "ru": "булочка" },
+    { "uz": "un", "en": "flour", "ru": "мука" },
+    { "uz": "makaron", "en": "pasta", "ru": "макароны" }
+  ],
+  "tuxum_va_parranda": [
+    { "uz": "tovuq tuxumi", "en": "chicken eggs", "ru": "куриные яйца" },
+    { "uz": "bedana tuxumi", "en": "quail eggs", "ru": "перепелиные яйца" }
+  ],
+  "dukkakli_va_donli": [
+    { "uz": "loviya", "en": "beans", "ru": "фасоль" },
+    { "uz": "no‘xat", "en": "chickpeas", "ru": "нут" },
+    { "uz": "mosh", "en": "mung beans", "ru": "маш" },
+    { "uz": "yasmiq", "en": "lentils", "ru": "чечевица" },
+    { "uz": "guruch", "en": "rice", "ru": "рис" },
+    { "uz": "grechka", "en": "buckwheat", "ru": "гречка" }
+  ],
+  "mevalar": [
+    { "uz": "olma", "en": "apple", "ru": "яблоко" },
+    { "uz": "banan", "en": "banana", "ru": "банан" },
+    { "uz": "apelsin", "en": "orange", "ru": "апельсин" },
+    { "uz": "mandarin", "en": "mandarin", "ru": "мандарин" },
+    { "uz": "uzum", "en": "grapes", "ru": "виноград" },
+    { "uz": "nok", "en": "pear", "ru": "груша" }
+  ],
+  "sabzavotlar": [
+    { "uz": "kartoshka", "en": "potato", "ru": "картофель" },
+    { "uz": "piyoz", "en": "onion", "ru": "лук" },
+    { "uz": "sabzi", "en": "carrot", "ru": "морковь" },
+    { "uz": "pomidor", "en": "tomato", "ru": "помидор" },
+    { "uz": "bodring", "en": "cucumber", "ru": "огурец" },
+    { "uz": "qalampir", "en": "pepper", "ru": "перец" }
+  ],
+  "gosht_va_baliq": [
+    { "uz": "mol go‘shti", "en": "beef", "ru": "говядина" },
+    { "uz": "qo‘y go‘shti", "en": "lamb", "ru": "баранина" },
+    { "uz": "tovuq go‘shti", "en": "chicken meat", "ru": "куриное мясо" },
+    { "uz": "baliq", "en": "fish", "ru": "рыба" }
+  ],
+  "ichimliklar": [
+    { "uz": "ichimlik suvi", "en": "drinking water", "ru": "питьевая вода" },
+    {
+      "uz": "gazlangan ichimlik",
+      "en": "soft drink",
+      "ru": "газированный напиток"
+    },
+    { "uz": "sharbat", "en": "juice", "ru": "сок" },
+    { "uz": "choy", "en": "tea", "ru": "чай" },
+    { "uz": "qahva", "en": "coffee", "ru": "кофе" }
+  ],
+  "shirinliklar": [
+    { "uz": "shokolad", "en": "chocolate", "ru": "шоколад" },
+    { "uz": "konfet", "en": "candy", "ru": "конфеты" },
+    { "uz": "pechenye", "en": "cookies", "ru": "печенье" },
+    { "uz": "tort", "en": "cake", "ru": "торт" },
+    { "uz": "murabbo", "en": "jam", "ru": "варенье" }
+  ],
+  "maishiy_kimyo": [
+    {
+      "uz": "kir yuvish kukuni",
+      "en": "laundry detergent",
+      "ru": "стиральный порошок"
+    },
+    {
+      "uz": "idish yuvish suyuqligi",
+      "en": "dishwashing liquid",
+      "ru": "средство для мытья посуды"
+    },
+    { "uz": "sovun", "en": "soap", "ru": "мыло" },
+    { "uz": "shampun", "en": "shampoo", "ru": "шампунь" },
+    { "uz": "tish pastasi", "en": "toothpaste", "ru": "зубная паста" }
+  ]
+}

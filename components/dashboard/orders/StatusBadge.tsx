@@ -1,0 +1,18 @@
+interface StatusBadgeProps {
+  status: 'Success' | 'Pending' | 'Cancel';
+}
+
+export default function StatusBadge({ status }: StatusBadgeProps) {
+  const variants = {
+    Success: 'bg-green-100 text-green-800',
+    Pending: 'bg-yellow-100 text-yellow-800',
+    Cancel: 'bg-red-100 text-red-800',
+  };
+
+  return (
+    <span
+      className={`px-3 py-1 rounded-full text-xs font-medium ${variants[status]}`}>
+      {status}
+    </span>
+  );
+}

@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // yoki mysql/sqlite
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  email     String
+  total     Int
+  createdAt DateTime    @default(now())
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id      String @id @default(cuid())
+  name    String
+  price   Int
+  qty     Int
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+}

@@ -1,0 +1,15 @@
+{
+  "IndexPage": {
+    "title": "Next.js ga xush kelibsiz",
+    "description": "Bu bosh sahifa",
+    "welcome": "Salom, {name}!"
+  },
+  "Navigation": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa"
+  },
+  "Footer": {
+    "copyright": "Barcha huquqlar himoyalangan"
+  }
+}

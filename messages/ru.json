@@ -1,0 +1,15 @@
+{
+  "IndexPage": {
+    "title": "Добро пожаловать в Next.js",
+    "description": "Это главная страница",
+    "welcome": "Привет, {name}!"
+  },
+  "Navigation": {
+    "home": "Главная",
+    "about": "О нас",
+    "contact": "Контакты"
+  },
+  "Footer": {
+    "copyright": "Все права защищены"
+  }
+}

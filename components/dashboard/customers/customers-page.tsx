@@ -1,0 +1,11 @@
+import Customers from './customors';
+
+export default function CustomersPage() {
+  return (
+    <>
+      <div className="p-6">
+        <Customers />
+      </div>
+    </>
+  );
+}
