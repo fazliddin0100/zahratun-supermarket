@@ -1,17 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Search, Grid, ChevronDown, Menu, MapPin, X } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import {
   Sheet,
   SheetContent,
@@ -19,20 +21,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { ChevronDown, Grid, MapPin, Menu, Search, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 // Maxsus komponentlar
-import Registration from '../auth/registration/registration';
-import LocationUsers from '../navbar/locationUser';
-import { AvatarUser } from '../navbar/avatar';
-import WishlistDrawer from '../wishlist/wishlist';
-import { CartSidebar } from '../cart/card';
 import { useLocationContext } from '@/context/LocationContext';
+import Registration from '../auth/registration/registration';
+import { CartSidebar } from '../cart/card';
+import { AvatarUser } from '../navbar/avatar';
+import LocationUsers from '../navbar/locationUser';
+import WishlistDrawer from '../wishlist/wishlist';
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -49,26 +49,25 @@ export default function Header() {
 
   const renderFlag = (lang: 'uz' | 'ru') => (
     <span className="w-5 h-3.5 block rounded-sm shadow-sm relative overflow-hidden">
-      {lang === 'uz' ? (
+      {lang === 'uz' ?
         <>
           <span className="absolute inset-x-0 top-0 h-1/3 bg-[#0099b5]"></span>
           <span className="absolute inset-x-0 top-1/3 h-1/3 bg-white"></span>
           <span className="absolute inset-x-0 bottom-0 h-1/3 bg-[#1eb024]"></span>
         </>
-      ) : (
-        <>
+      : <>
           <span className="absolute inset-x-0 top-0 h-1/3 bg-white"></span>
           <span className="absolute inset-x-0 top-1/3 h-1/3 bg-[#0039A6]"></span>
           <span className="absolute inset-x-0 bottom-0 h-1/3 bg-[#D52B1E]"></span>
         </>
-      )}
+      }
     </span>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white dark:bg-zinc-950 border-b">
+    <header className="sticky top-0 z-50 w-full bg-white  border-b">
       {/* TOP BAR */}
-      <div className="bg-zinc-50 dark:bg-zinc-900/50 py-1.5 border-b">
+      <div className="bg-zinc-50  py-1.5 border-b">
         <div className="container mx-auto px-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <DropdownMenu>
@@ -96,7 +95,7 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <div className="hidden sm:flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white text-[12px] font-semibold py-2 px-4 rounded-md shadow-md">
+            <div className="hidden sm:flex items-center bg-linear-to-r from-green-500 to-green-600 text-white text-[12px] font-semibold py-2 px-4 rounded-md shadow-md">
               Bepul yetkazib berish <span className="ml-1 font-bold">$50</span>{' '}
               dan yuqori mahsulot xarid qilinganda amal qiladi!
             </div>
@@ -111,7 +110,7 @@ export default function Header() {
       {/* MAIN HEADER */}
       <div className="md:py-5 container mx-auto px-4">
         <div className="flex items-center justify-between gap-4">
-          {/* Mobil Hamburger - FIXED */}
+          {/* Mobil Hamburger */}
           <div className="lg:hidden">
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
@@ -125,6 +124,9 @@ export default function Header() {
                 </SheetHeader>
 
                 <div className="flex flex-col h-full overflow-y-auto p-4">
+                  <div className="m-2 w-full flex items-center justify-center">
+                    <LocationUsers />
+                  </div>
                   <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="categories" className="border-none">
                       <AccordionTrigger className="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-xl hover:no-underline">
@@ -156,7 +158,6 @@ export default function Header() {
                     {[
                       { name: 'Biz haqimizda', href: '/about' },
                       { name: 'Do‘kon', href: '/shop' },
-                      { name: 'Do‘konlar', href: '/stores' },
                       { name: 'Dashboard', href: '/dashboard' },
                     ].map((link) => (
                       <Link
@@ -168,10 +169,6 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
-
-                  <div className="mt-auto pt-6 border-t pb-10">
-                    <LocationUsers />
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -181,7 +178,7 @@ export default function Header() {
             <Image
               src="/zahratun-logo-ini.png"
               alt="Logo"
-              width={180}
+              width={110}
               height={40}
               className="w-32 md:w-44 h-auto"
             />
@@ -208,15 +205,12 @@ export default function Header() {
               size="icon"
               className="lg:hidden"
               onClick={() => setIsSearchOpen(!isSearchOpen)}>
-              {isSearchOpen ? (
+              {isSearchOpen ?
                 <X className="h-5 w-5" />
-              ) : (
-                <Search className="h-5 w-5" />
-              )}
+              : <Search className="h-5 w-5" />}
             </Button>
-            <div className="hidden md:block">
-              <LocationUsers />
-            </div>
+
+            <LocationUsers />
             <WishlistDrawer />
             <Registration />
             <CartSidebar />

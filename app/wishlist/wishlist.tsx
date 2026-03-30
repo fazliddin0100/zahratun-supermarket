@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Heart, Trash2, ShoppingCart, MessageCircle, X } from 'lucide-react';
+import { Heart, Trash2, X } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -61,8 +61,8 @@ const initialWishlist = [
     price: '$12.00',
     weight: '1 kg',
     status: 'in-stock',
-    image: '/images/products/product-img-14.jpg',
-  }, // Ko'proq mahsulot test uchun
+    image: '/images/products/product-img-13.jpg',
+  },
 ];
 
 const WishlistDrawer = () => {
@@ -86,12 +86,12 @@ const WishlistDrawer = () => {
         </div>
       </SheetTrigger>
 
-      {/* h-full va flex-col scroll ishlashi uchun muhim */}
       <SheetContent
         side="left"
-        className="w-full sm:max-w-md h-full flex flex-col p-0 gap-0 border-r shadow-2xl [&>button]:hidden">
-        {/* HEADER - Balandligi aniq va qat'iy */}
-        <SheetHeader className="p-5 border-b bg-white dark:bg-zinc-950 flex flex-row items-center justify-between shrink-0">
+        // Yangi kenglik: mobil uchun 90% dan oshmasin, kattaroq ekranlarda maksimal 400px
+        className="w-[90vw] sm:w-full sm:max-w-sm md:max-w-md h-full flex flex-col p-0 gap-0 border-r shadow-2xl [&>button]:hidden">
+        {/* HEADER */}
+        <SheetHeader className="p-5 border-b bg-white flex flex-row items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <Heart className="h-5 w-5 text-green-600 fill-green-600" />
             <SheetTitle className="text-lg font-bold">
@@ -110,7 +110,7 @@ const WishlistDrawer = () => {
           </Button>
         </SheetHeader>
 
-        {/* SCROLLAREA - flex-1 uni barcha bo'sh joyni egallashga majbur qiladi */}
+        {/* SCROLL AREA */}
         <ScrollArea className="flex-1 w-full overflow-hidden">
           <div className="p-5">
             {items.length > 0 ? (
@@ -164,7 +164,7 @@ const WishlistDrawer = () => {
           </div>
         </ScrollArea>
 
-        {/* FOOTER - shrink-0 pastda qotib turishini ta'minlaydi */}
+        {/* FOOTER */}
         {items.length > 0 && (
           <div className="p-5 border-t bg-white dark:bg-zinc-950 shrink-0">
             <Button className="w-full bg-zinc-900 py-6 font-bold rounded-xl shadow-lg">

@@ -1,16 +1,16 @@
 'use client';
 
-import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { LogOut } from 'lucide-react';
+import Link from 'next/link';
 
 export function AvatarUser() {
   return (
@@ -41,17 +41,17 @@ export function AvatarUser() {
 
           {/* Menu items */}
           <DropdownMenuItem>
-            <Link href="/" className="w-full block py-2">
+            <Link href="/" className="w-full block">
               Home
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href="/account/profile" className="w-full block py-2">
+            <Link href="/account/profile" className="w-full block">
               Profile
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href="/account/settings" className="w-full block py-2">
+            <Link href="/account/settings" className="w-full block">
               Settings
             </Link>
           </DropdownMenuItem>

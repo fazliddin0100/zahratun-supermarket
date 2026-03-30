@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
 import {
@@ -13,7 +13,6 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
 
 // Types
 interface CartItem {
@@ -107,25 +106,32 @@ export function CartSidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" className="relative dark:text-white">
-          <ShoppingBag className="w-5 h-5 mr-2 dark:text-white" />
-          Savat
-          <Badge className="ml-2 bg-primary">{cartItems.length}</Badge>
-        </Button>
+        <div className="relative">
+          <ShoppingBag className="h-5 w-5" />
+          {cartItems.length > 0 && (
+            <span className="absolute -top-3 -right-2 flex items-center justify-center min-w-4.5 h-4.5 rounded-full bg-green-500 px-1 text-[10px] font-bold text-white leading-none">
+              {cartItems.length}
+            </span>
+          )}
+        </div>
       </SheetTrigger>
 
-      {/* Asosiy konteyner: flex column va h-full */}
-      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col h-full dark:text-white">
+      {/* Responsiv sidebar */}
+      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col h-full max-h-screen overflow-y-auto dark:text-white">
         {/* Header */}
-        <SheetHeader className="p-6 border-b flex-none">
-          <SheetTitle className="text-xl font-bold">Savatcha</SheetTitle>
-          <p className="text-sm text-muted-foreground">
-            Manzil: Toshkent, 382480
-          </p>
+        <SheetHeader className="p-1 sm:p-6 border-b flex items-start justify-between">
+          <div>
+            <SheetTitle className="text-lg sm:text-xl font-bold">
+              Savatcha
+            </SheetTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Manzil: Toshkent, 382480
+            </p>
+          </div>
         </SheetHeader>
 
         {/* Alert */}
-        <div className="px-6 pt-4 flex-none">
+        <div className="px-4 sm:px-6 pt-4 flex-none">
           <Alert className="bg-red-50 border-red-200 text-red-800 dark:bg-red-950/20 py-3">
             <AlertDescription className="text-sm flex items-center justify-between">
               <span>
@@ -141,7 +147,7 @@ export function CartSidebar() {
         </div>
 
         {/* Scrollable items */}
-        <ScrollArea className="flex-1 px-6 py-4 overflow-y-auto">
+        <ScrollArea className="flex-1 px-4 sm:px-6 py-4 overflow-y-auto">
           <div className="space-y-6 pb-8">
             {cartItems.map((item) => (
               <div
@@ -205,22 +211,22 @@ export function CartSidebar() {
           </div>
         </ScrollArea>
 
-        {/* Footer - har doim pastda ko‘rinadi */}
-        <div className="flex-none border-t bg-background p-6 space-y-4">
-          <div className="flex justify-between items-center">
-            <span className="text-lg font-semibold">Jami:</span>
-            <span className="text-2xl font-bold text-primary">
+        {/* Footer */}
+        <div className="flex-none border-t bg-background p-4 sm:p-6 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <span className="text-base sm:text-lg font-semibold">Jami:</span>
+            <span className="text-xl sm:text-2xl font-bold text-primary">
               ${total.toFixed(2)}
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" size="lg" className="h-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Button variant="outline" size="lg" className="h-12 w-full">
               Yangilash
             </Button>
             <Button
               size="lg"
-              className="h-12 bg-green-600 hover:bg-green-700 text-white">
+              className="h-12 w-full bg-green-600 hover:bg-green-700 text-white">
               Xarid qilish
             </Button>
           </div>

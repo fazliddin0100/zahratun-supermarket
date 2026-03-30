@@ -10,52 +10,48 @@ export type Coords = {
 
 export const useLocation = () => {
   const [nearest, setNearest] = useState<string | null>(null);
-  const [selected, setSelected] = useState<string | null>(null);
   const [coords, setCoords] = useState<Coords | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  // Koordinata orqali manzil matnini olish
+  const fetchAddress = async (lat: number, lng: number) => {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`,
+        { headers: { 'User-Agent': 'zahratun-app' } }
+      );
+      const data = await res.json();
+      if (data.display_name) {
+        setNearest(data.display_name);
+      }
+    } catch {
+      toast.error('Manzilni olishda xatolik');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const detectLocation = () => {
-    if (!navigator.geolocation) {
-      toast.error('Geolocation qo‘llab-quvvatlanmaydi');
-      return;
-    }
+    if (!navigator.geolocation) return toast.error('Geolocation support yo‘q');
 
     navigator.geolocation.getCurrentPosition(
-      async (pos) => {
+      (pos) => {
         const { latitude, longitude } = pos.coords;
         setCoords({ lat: latitude, lng: longitude });
-
-        try {
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`,
-            {
-              headers: {
-                // MUHIM: Nominatim talab qiladi
-                'User-Agent': 'zahratun-app',
-              },
-            }
-          );
-
-          if (!res.ok) throw new Error('Reverse geocoding failed');
-
-          const data = await res.json();
-
-          if (data.display_name) {
-            setNearest(data.display_name);
-            setSelected(data.display_name);
-          }
-        } catch {
-          toast.error('Manzilni aniqlashda xatolik');
-        }
+        fetchAddress(latitude, longitude);
       },
-      () => toast.error('Lokatsiyaga ruxsat berilmadi')
+      () => toast.error('Ruxsat berilmadi'),
+      { enableHighAccuracy: true }
     );
   };
 
   return {
     nearest,
-    selected,
     coords,
-    setSelected,
+    setCoords, 
+    fetchAddress,
     detectLocation,
+    loading,
   };
 };

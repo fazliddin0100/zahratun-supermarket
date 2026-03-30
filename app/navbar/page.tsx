@@ -1,15 +1,15 @@
 'use client';
 
 import { ModeToggle } from '@/components/ui/modeToggle';
-import { AvatarUser } from './avatar';
-import LoveProducts from './love-product';
-import Registration from '../auth/registration/registration';
-import ShoppingCardPage from './shopping-card';
-import Image from 'next/image';
-import SearchProducts from './search';
-import LocationUsers from './locationUser';
-import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import Registration from '../auth/registration/registration';
+import { AvatarUser } from './avatar';
+import LocationUsers from './locationUser';
+import LoveProducts from './love-product';
+import SearchProducts from './search';
+import ShoppingCardPage from './shopping-card';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function Navbar() {
             <LoveProducts />
             <ShoppingCardPage />
 
-            {/* Faqat Desktop uchun qo'shimchalar (LG ekrandan boshlab) */}
+            {/* Faqat Desktop uchun qo'shimchalar */}
             <div className="hidden lg:flex items-center gap-3 ml-2 border-l pl-4 dark:border-gray-700">
               <LocationUsers />
               <Registration />
@@ -47,11 +47,13 @@ export default function Navbar() {
               <AvatarUser />
             </div>
 
-            {/* Mobil va Planshet uchun Hamburger (LG dan kichik ekranlarda) */}
+            {/* Mobil va Planshet uchun Hamburger */}
             <button
               className="lg:hidden p-2 ml-1 text-gray-700 dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
               onClick={() => setOpen(!open)}>
-              {open ? <X size={26} /> : <Menu size={26} />}
+              {open ?
+                <X size={26} />
+              : <Menu size={26} />}
             </button>
           </div>
         </div>

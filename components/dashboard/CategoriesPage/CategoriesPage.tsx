@@ -31,9 +31,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { IndeterminateCheckbox } from '@/components/dashboard/products/indeterminate-checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { toast } from 'sonner';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CheckedState } from '@radix-ui/react-checkbox';
 
 // Agar AddCategoryPage alohida faylda bo'lsa, uni import qiling
 import AddCategoryPage from './add-category';
@@ -78,6 +78,10 @@ const mockCategories = [
 
 type StatusFilter = 'all' | 'published' | 'unpublished';
 
+interface ActionMenuProps {
+  id: number;
+}
+
 export default function CategoriesPage() {
   // 1. Sahifalararo o'tish holati
   const [showAddPage, setShowAddPage] = useState(false);
@@ -100,7 +104,7 @@ export default function CategoriesPage() {
     });
   }, [categories, searchTerm, statusFilter]);
 
-  const totalPages = Math.ceil(filteredCategories.length / itemsPerPage);
+  // const totalPages = Math.ceil(filteredCategories.length / itemsPerPage);
   const paginatedCategories = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
     return filteredCategories.slice(start, start + itemsPerPage);
@@ -178,8 +182,10 @@ export default function CategoriesPage() {
                   <div className="flex items-center gap-2 overflow-x-auto">
                     <Select
                       value={statusFilter}
-                      onValueChange={(v) => setStatusFilter(v as StatusFilter)}>
-                      <SelectTrigger className="w-[140px] h-11 rounded-xl border-gray-100 bg-gray-50/50">
+                      onValueChange={(v: string) =>
+                        setStatusFilter(v as StatusFilter)
+                      }>
+                      <SelectTrigger className="w-35 h-11 rounded-xl border-gray-100 bg-gray-50/50">
                         <Filter className="h-3.5 w-3.5 mr-2 text-gray-500" />
                         <SelectValue placeholder="Status" />
                       </SelectTrigger>
@@ -219,7 +225,7 @@ export default function CategoriesPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-50">
-                      {paginatedCategories.map((cat, idx) => (
+                      {paginatedCategories.map((cat) => (
                         <motion.tr
                           key={cat.id}
                           initial={{ opacity: 0 }}
@@ -228,8 +234,8 @@ export default function CategoriesPage() {
                           <td className="p-4 text-center">
                             <Checkbox
                               checked={selectedIds.includes(cat.id)}
-                              onCheckedChange={(c) =>
-                                handleSelectOne(cat.id, !!c)
+                              onCheckedChange={(checked: CheckedState) =>
+                                handleSelectOne(cat.id, checked === true)
                               }
                             />
                           </td>
@@ -316,7 +322,7 @@ export default function CategoriesPage() {
   );
 }
 
-function ActionMenu({ id }: { id: number }) {
+function ActionMenu({ id }: ActionMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

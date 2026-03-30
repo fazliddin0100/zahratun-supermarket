@@ -1,6 +1,6 @@
 'use client';
 
-import { ShoppingCart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
+import { ShoppingCart } from 'lucide-react';
 
 export default function ShoppingCartSheet() {
   return (
@@ -31,9 +31,9 @@ export default function ShoppingCartSheet() {
           <SheetHeader>
             <SheetTitle>Savat</SheetTitle>
           </SheetHeader>
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <p>Bu yerda shopping cart itemlari bo‘ladi</p>
-          </div>
+          </div> */}
         </SheetContent>
       </Sheet>
 

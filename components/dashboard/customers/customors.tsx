@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -37,21 +36,23 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { AuthType } from '@/interface/auth.interface';
 import {
+  ArrowLeft,
+  Mail,
   MoreVertical,
   Pencil,
-  Trash2,
-  Search,
-  UserPlus,
   Phone,
-  Mail,
   Save,
-  ArrowLeft,
+  Search,
+  Trash2,
   Upload,
-  X,
   User,
+  UserPlus,
+  X,
 } from 'lucide-react';
 import Link from 'next/link';
+import React, { useRef, useState } from 'react';
 
 // --- INTERFEYS VA MA'LUMOTLAR ---
 interface Customer {
@@ -89,7 +90,9 @@ const INITIAL_CUSTOMERS: Customer[] = [
 ];
 
 // --- ASOSIY KOMPONENT ---
-export default function CustomersPage() {
+const CustomersPage = ({ auths = [] }: { auths?: AuthType[] }) => {
+  console.log(auths);
+
   const [view, setView] = useState<'list' | 'form'>('list');
   const [customers] = useState<Customer[]>(INITIAL_CUSTOMERS);
 
@@ -127,21 +130,21 @@ export default function CustomersPage() {
   const handleRemoveImage = () => {
     setSelectedImage(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // Inputni tozalash
+      fileInputRef.current.value = '';
     }
   };
 
   // Yangi mijoz qo'shish tugmasi uchun
   const handleAddNew = () => {
     setCurrentCustomer(null);
-    setSelectedImage(null); // yangi forma bo'sh bo'lsin
+    setSelectedImage(null);
     setView('form');
   };
 
   // Tahrirlash tugmasi uchun
   const handleEdit = (customer: Customer) => {
     setCurrentCustomer(customer);
-    setSelectedImage(customer.avatar); // mavjud rasmni ko'rsatish
+    setSelectedImage(customer.avatar);
     setView('form');
   };
 
@@ -469,7 +472,7 @@ export default function CustomersPage() {
       )}
     </div>
   );
-}
+};
 
 // --- DETALLAR PANELI (SHEET) ---
 function CustomerDetailSheet({ customer }: { customer: Customer }) {
@@ -580,3 +583,5 @@ function CustomerDetailSheet({ customer }: { customer: Customer }) {
     </SheetContent>
   );
 }
+
+export default CustomersPage;

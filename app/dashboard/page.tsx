@@ -1,22 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import TopNavbar from '@/components/dashboard/navbar/TopNavbar';
-import Sidebar from '@/components/dashboard/sidebar/Sidebar';
 import DashboardCards from '@/components/dashboard/cards/DashboardCards';
+import CategoriesPage from '@/components/dashboard/CategoriesPage/CategoriesPage';
 import RevenueChart from '@/components/dashboard/charts/RevenueChart';
 import SalesChart from '@/components/dashboard/charts/SalesChart';
-import ProductsPage from '@/components/dashboard/products/praductsPage';
-import CategoriesPage from '@/components/dashboard/CategoriesPage/CategoriesPage';
-import OrdersDropdown from '@/components/dashboard/orders/order-page';
 import CustomersPage from '@/components/dashboard/customers/customers-page';
+import TopNavbar from '@/components/dashboard/navbar/TopNavbar';
+import OrdersDropdown from '@/components/dashboard/orders/order-page';
+import ProductsPage from '@/components/dashboard/products/praductsPage';
 import ReviewsPage from '@/components/dashboard/Reviews/reviews.';
+import Sidebar from '@/components/dashboard/sidebar/Sidebar';
+import { useEffect, useState } from 'react';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // 🔒 Sidebar ochilganda body scroll bloklanadi
   useEffect(() => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);

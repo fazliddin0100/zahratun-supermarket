@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
   Carousel,
@@ -10,8 +8,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
+import Image from 'next/image';
+import Link from 'next/link';
 import CategorySlider from './category-product';
 
 const Hero = () => {

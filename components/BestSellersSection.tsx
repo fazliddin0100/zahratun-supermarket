@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Eye, Heart, ArrowLeftRight, Plus, Star } from 'lucide-react';
+import { ArrowLeftRight, Eye, Heart, Plus, Star } from 'lucide-react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 // Swiper kutubxonasi va modullari
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Swiper stillari
 import 'swiper/css';
@@ -146,10 +146,10 @@ export default function BestSellersSection() {
   };
 
   return (
-    <section className="py-12 bg-white dark:bg-zinc-950">
+    <section className="py-12 bg-white ">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <h3 className="text-2xl font-bold text-gray-900 ">
             Kundalik eng yaxshi sotuvlar
           </h3>
         </div>
@@ -256,9 +256,9 @@ export default function BestSellersSection() {
                             <Star
                               key={i}
                               className={`w-3 h-3 ${
-                                i < p.rating
-                                  ? 'fill-yellow-400 text-yellow-400'
-                                  : 'text-gray-300'
+                                i < p.rating ?
+                                  'fill-yellow-400 text-yellow-400'
+                                : 'text-gray-300'
                               }`}
                             />
                           ))}
